@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "02953055-244a-42bc-89c3-bbc1575a251b",
+		"name": "GestionDeTache",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32422545"
+	},
+	"item": [
+		{
+			"name": "Tache",
+			"item": [
+				{
+					"name": "ListeTache",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detailtache",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/1",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AjouterTache",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"titre\": \"test\", \r\n    \"date_debut\": \"2024-05-01\", \r\n    \"date_echeance\": \"2024-05-01\", \r\n    \"complete\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModifierTache",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titre\": \"Un titre\",\r\n  \"description\": \"\",\r\n  \"date_debut\": \"2024-04-20\",\r\n  \"date_echeance\": \"2024-04-25\",\r\n  \"complete\": \"true\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/1",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModifierStatutTache",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "cxftrqo0h7as742by3or1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/8/statut/1",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"8",
+								"statut",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SupprimerTache",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/15",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SousTache",
+			"item": [
+				{
+					"name": "AjouterSousTache",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titre\": \"Faire cc\",\r\n  \"complete\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/8/sousTaches",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"8",
+								"sousTaches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModifierSousTache",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titre\": \"bat\",\r\n  \"complete\": \"true\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/8/sousTaches/6",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"8",
+								"sousTaches",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModifierStatutTache",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/8/sousTaches/7/statut/6",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"8",
+								"sousTaches",
+								"7",
+								"statut",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SupprimerSousTache",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "r3gnq9tu9vpdyathawq77"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/taches/8/sousTaches/6",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"taches",
+								"8",
+								"sousTaches",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utilisateur",
+			"item": [
+				{
+					"name": "NouvelleCle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courriel\" : \"Mathis_45@hotmail.comr\",\r\n    \"mot_de_passe\" : \"mdp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/utilisateurs/nouvelleCle",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"utilisateurs",
+								"nouvelleCle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreeUtilisateur",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prenom\" : \"Mathis\",\r\n    \"nom\" : \"Cantin\",\r\n    \"courriel\" : \"Mathis_45@hotmail.comr\",\r\n    \"mot_de_passe\" : \"mdp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-tache.onrender.com/api/utilisateurs",
+							"protocol": "https",
+							"host": [
+								"api-tache",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"utilisateurs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

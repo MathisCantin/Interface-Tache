@@ -1,0 +1,801 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mui/mui-toolpad/v0.1.54/docs/schemas/v1/definitions.json#properties/Page
+
+apiVersion: v1
+kind: page
+spec:
+  title: Default page
+  alias:
+    - MUDXG4K
+  content:
+    - component: Text
+      name: text
+      layout:
+        horizontalAlign: center
+      props:
+        value: Liste des tâches
+        variant: h4
+    - component: DataGrid
+      name: dataGrid
+      props:
+        rows:
+          $$jsExpression: ListeTaches.data
+        columns:
+          - field: id
+            type: number
+          - field: titre
+            type: string
+            width: 736
+    - component: Container
+      name: container
+      children:
+        - component: Text
+          name: text3
+          layout:
+            horizontalAlign: center
+          props:
+            value: Cliquer sur une tache de la liste pour afficher ces détails
+            variant: h4
+        - component: PageRow
+          name: pageRow4
+          layout:
+            columnSize: 1
+          props:
+            justifyContent: start
+          children:
+            - component: PageColumn
+              name: pageColumn2
+              layout:
+                columnSize: 1
+              children:
+                - component: PageRow
+                  name: pageRow5
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text9
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Id:"
+                    - component: TextField
+                      name: textFieldModifierTacheId
+                      layout:
+                        columnSize: 1
+                      props:
+                        defaultValue:
+                          $$jsExpression: DetailTache.data.id
+                - component: PageRow
+                  name: pageRow6
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text10
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Titre:"
+                    - component: TextField
+                      name: textFieldModifierTacheTitre
+                      props:
+                        defaultValue:
+                          $$jsExpression: DetailTache.data.titre
+                - component: PageRow
+                  name: pageRow7
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text11
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Description:"
+                    - component: TextField
+                      name: textFieldModifierTacheDesc
+                      props:
+                        defaultValue:
+                          $$jsExpression: DetailTache.data.description
+                - component: PageRow
+                  name: pageRow8
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text8
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Début:"
+                    - component: DatePicker
+                      name: datePickerModifierTacheDebut
+                      props:
+                        defaultValue:
+                          $$jsExpression: DetailTache.data.date_debut.split('T')[0]
+                - component: PageRow
+                  name: pageRow9
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text12
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Échéance:"
+                    - component: DatePicker
+                      name: datePickerModifierTacheEcheance
+                      layout:
+                        columnSize: 1
+                      props:
+                        defaultValue:
+                          $$jsExpression: DetailTache.data.date_echeance.split('T')[0]
+                - component: PageRow
+                  name: pageRow11
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text16
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Complété:"
+                    - component: TextField
+                      name: textFieldModifierTacheComplete
+                      props:
+                        placeholder: true/false
+                        defaultValue:
+                          $$jsExpression: DetailTache.data.complete
+            - component: Container
+              name: container1
+              children:
+                - component: Spacer
+                  name: spacer
+                - component: Button
+                  name: button
+                  layout:
+                    horizontalAlign: center
+                    verticalAlign: center
+                  props:
+                    content: Modifier
+                    fullWidth: false
+                    onClick:
+                      $$jsExpressionAction: ModifierTache.call()
+                - component: Button
+                  name: button4
+                  layout:
+                    horizontalAlign: center
+                  props:
+                    content: Modifier statut
+                    onClick:
+                      $$jsExpressionAction: ModifierStatutTache.call()
+                - component: Spacer
+                  name: spacer1
+                - component: Button
+                  name: button1
+                  layout:
+                    horizontalAlign: center
+                  props:
+                    color: secondary
+                    content: Supprimer
+                    onClick:
+                      $$jsExpressionAction: "await SupprimerTache.call()\r
+
+                        \r
+
+                        textFieldModifierTacheId.value = \"\"\r
+
+                        textFieldModifierTacheTitre.value = \"\"\r
+
+                        textFieldModifierTacheDesc.value = \"\"\r
+
+                        datePickerModifierTacheDebut.value = \"\"\r
+
+                        datePickerModifierTacheEcheance.value = \"\"\r
+
+                        textFieldModifierTacheComplete.value = \"\""
+    - component: PageRow
+      name: pageRow
+      props:
+        justifyContent: start
+      children:
+        - component: PageColumn
+          name: pageColumn1
+          layout:
+            columnSize: 1
+          children:
+            - component: Form
+              name: form
+              props:
+                submitButtonText: Ajouter
+                formControlsAlign: center
+                formControlsFullWidth: false
+                hasResetButton: false
+                onSubmit:
+                  $$jsExpressionAction: "await AjouterTache.call()\r
+
+                    textFieldAjouterTitre.value = \"\"\r
+
+                    textFieldAjouterDesc.value = \"\"\r
+
+                    datePickerAjouter.value = \"\""
+              children:
+                - component: Text
+                  name: text2
+                  layout:
+                    horizontalAlign: center
+                  props:
+                    value: Ajouter une tâche
+                    variant: h4
+                - component: PageRow
+                  name: pageRow1
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text4
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Titre:"
+                    - component: TextField
+                      name: textFieldAjouterTitre
+                      layout:
+                        verticalAlign: start
+                      props:
+                        fullWidth: false
+                        isRequired: true
+                - component: PageRow
+                  name: pageRow10
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text13
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Description:"
+                    - component: TextField
+                      name: textFieldAjouterDesc
+                - component: PageRow
+                  name: pageRow2
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text5
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Date d'échéance:"
+                    - component: DatePicker
+                      name: datePickerAjouter
+                      props:
+                        isRequired: true
+            - component: Form
+              name: form1
+              props:
+                submitButtonText: Ajouter
+                formControlsAlign: center
+                onSubmit:
+                  $$jsExpressionAction: "await AjouterSousTache.call()\r
+
+                    \r
+
+                    textFieldAjouterSousTacheTitre.value = \"\""
+              children:
+                - component: Text
+                  name: text6
+                  layout:
+                    horizontalAlign: center
+                    verticalAlign: center
+                  props:
+                    value: Ajouter une sous-tâche à la tache séctionnée
+                    variant: h6
+                - component: PageRow
+                  name: pageRow3
+                  props:
+                    justifyContent: start
+                  children:
+                    - component: Text
+                      name: text7
+                      layout:
+                        horizontalAlign: end
+                      props:
+                        value: "Titre:"
+                    - component: TextField
+                      name: textFieldAjouterSousTacheTitre
+                      props:
+                        isRequired: true
+        - component: PageColumn
+          name: pageColumn
+          layout:
+            columnSize: 1
+          children:
+            - component: Text
+              name: text1
+              layout:
+                horizontalAlign: center
+              props:
+                value: Liste sous-tâches
+                variant: h4
+            - component: DataGrid
+              name: dataGrid2
+              layout:
+                columnSize: 1
+              props:
+                rows:
+                  $$jsExpression: DetailTache.data.liste_sous_taches
+                columns:
+                  - field: id
+                    type: number
+                  - field: titre
+                    type: string
+                  - field: complete
+                    type: boolean
+            - component: Text
+              name: text14
+              props:
+                value: Cliquer sur une sous-tâche de la liste pour afficher ces détails
+                variant: h6
+              layout:
+                horizontalAlign: center
+                verticalAlign: center
+            - component: PageRow
+              name: pageRow13
+              props:
+                justifyContent: start
+              children:
+                - component: Text
+                  name: text15
+                  layout:
+                    columnSize: 1
+                    horizontalAlign: end
+                  props:
+                    value: "Titre:"
+                - component: TextField
+                  name: textFieldModifierSTTitre
+                  layout:
+                    columnSize: 1
+                  props:
+                    defaultValue:
+                      $$jsExpression: dataGrid2.selection.titre
+            - component: PageRow
+              name: pageRow14
+              props:
+                justifyContent: start
+              children:
+                - component: Text
+                  name: text17
+                  layout:
+                    horizontalAlign: end
+                  props:
+                    value: "Complété:"
+                - component: TextField
+                  name: textFieldModifierCompleteST
+                  props:
+                    placeholder: true/false
+                    defaultValue:
+                      $$jsExpression: dataGrid2.selection.complete
+            - component: PageRow
+              name: pageRow12
+              props:
+                justifyContent: start
+              children:
+                - component: Button
+                  name: button3
+                  layout:
+                    columnSize: 1
+                    horizontalAlign: center
+                  props:
+                    color: secondary
+                    content: Supprimer
+                    onClick:
+                      $$jsExpressionAction: "await SupprimerSousTache.call()\r
+
+                        \r
+
+                        textFieldModifierTitre.value = \"\"\r
+
+                        textFieldModifierCompleteST.value = \"\""
+                - component: PageColumn
+                  name: pageColumn3
+                  layout:
+                    columnSize: 1
+                  children:
+                    - component: Button
+                      name: button2
+                      layout:
+                        columnSize: 1
+                        horizontalAlign: center
+                      props:
+                        content: Modifier
+                        onClick:
+                          $$jsExpressionAction:
+                            "await ModifierSousTache.call()\r
+
+                            textFieldModifierSTTitre.value = \"\"\r
+
+                            textFieldModifierCompleteST = \"\""
+                    - component: Button
+                      name: button5
+                      layout:
+                        horizontalAlign: center
+                      props:
+                        content: Modifier Statut
+                        onClick:
+                          $$jsExpressionAction:
+                            "await ModifierStatutSousTache.call()\r
+
+                            textFieldModifierSTTitre.value = \"\"\r
+
+                            textFieldModifierCompleteST.value = \"\""
+  queries:
+    - name: ListeTaches
+      mode: query
+      query:
+        kind: rest
+        url:
+          $$jsExpression: parameters.API_HOST + "/taches?afficherToutes=true"
+        headers:
+          [
+            {
+              name: Authorization,
+              value: { $$jsExpression: parameters.API_KEY },
+            },
+          ]
+        method: GET
+        searchParams: []
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+      refetchInterval: 10000
+    - name: DetailTache
+      mode: query
+      query:
+        kind: rest
+        url:
+          $$jsExpression: parameters.API_HOST + "/taches/" + parameters.ID
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        method: GET
+        searchParams: []
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: ID
+          value:
+            $$jsExpression: dataGrid.selection.id
+      refetchInterval: 10000
+    - name: AjouterTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression: parameters.API_HOST + "/taches"
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        method: POST
+        body:
+          kind: raw
+          content:
+            $$jsExpression: "`\r
+
+              {\r
+
+              \  \"titre\": \"${parameters.Titre}\",\r
+
+              \  \"date_debut\": \"${new
+              Date().toISOString().split('T')[0]}\",\r
+
+              \  \"description\": \"${parameters.Desc}\",\r
+
+              \  \"date_echeance\": \"${parameters.Echeance}\",\r
+
+              \  \"complete\": \"false\"\r
+
+              }\r
+
+              `"
+          contentType: application/json
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: Titre
+          value:
+            $$jsExpression: textFieldAjouterTitre.value
+        - name: Echeance
+          value:
+            $$jsExpression: datePickerAjouter.value
+        - name: Desc
+          value:
+            $$jsExpression: textFieldAjouterDesc.value
+    - name: AjouterSousTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression: parameters.API_HOST + "/taches/" + parameters.Id + "/sousTaches"
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content:
+            $$jsExpression: "`\r
+
+              {\r
+
+              \  \"titre\": \"${parameters.Titre}\",\r
+
+              \  \"complete\": \"false\"\r
+
+              }\r
+
+              `"
+          contentType: application/json
+        method: POST
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: Titre
+          value:
+            $$jsExpression: textFieldAjouterSousTacheTitre.value
+        - name: Id
+          value:
+            $$jsExpression: dataGrid.selection.id
+    - name: SupprimerTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression: parameters.API_HOST + "/taches/" + parameters.Id
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content: ""
+          contentType: application/json
+        method: DELETE
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: Id
+          value:
+            $$jsExpression: dataGrid.selection.id
+    - name: ModifierTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression: parameters.API_HOST + "/taches/" + parameters.Id
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content:
+            $$jsExpression: "`\r
+
+              {\r
+
+              \  \"titre\": \"${parameters.Titre}\",\r
+
+              \  \"description\": \"${parameters.Desc}\",\r
+
+              \  \"date_debut\": \"${parameters.Debut}\",\r
+
+              \  \"date_echeance\": \"${parameters.Echeance}\",\r
+
+              \  \"complete\": \"${parameters.complete}\"\r
+
+              }\r
+
+              `"
+          contentType: application/json
+        method: PUT
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: Titre
+          value:
+            $$jsExpression: textFieldModifierTacheTitre.value
+        - name: Desc
+          value:
+            $$jsExpression: textFieldModifierTacheDesc.value
+        - name: Debut
+          value:
+            $$jsExpression: datePickerModifierTacheDebut.value
+        - name: Echeance
+          value:
+            $$jsExpression: datePickerModifierTacheEcheance.value
+        - name: complete
+          value:
+            $$jsExpression: textFieldModifierTacheComplete.value
+        - name: Id
+          value:
+            $$jsExpression: textFieldModifierTacheId.value
+    - name: SupprimerSousTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression:
+            parameters.API_HOST + "/taches/" + parameters.IdTache +
+            "/sousTaches/" + parameters.IdSousTache
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content: ""
+          contentType: application/json
+        method: DELETE
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: IdTache
+          value:
+            $$jsExpression: dataGrid.selection.id
+        - name: IdSousTache
+          value:
+            $$jsExpression: dataGrid2.selection.id
+    - name: ModifierSousTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression:
+            parameters.API_HOST + "/taches/" + parameters.IdTache +
+            "/sousTaches/" + parameters.IdSousTache
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content:
+            $$jsExpression: "`\r
+
+              {\r
+
+              \  \"titre\": \"${parameters.titre}\",\r
+
+              \  \"complete\": \"${parameters.complete}\"\r
+
+              }\r
+
+              `"
+          contentType: application/json
+        method: PUT
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: IdTache
+          value:
+            $$jsExpression: dataGrid.selection.id
+        - name: titre
+          value:
+            $$jsExpression: textFieldModifierSTTitre.value
+        - name: complete
+          value:
+            $$jsExpression: textFieldModifierCompleteST.value
+        - name: IdSousTache
+          value:
+            $$jsExpression: dataGrid2.selection.id
+    - name: ModifierStatutTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression:
+            parameters.API_HOST + "/taches/" + parameters.Id + "/statut/" +
+            parameters.complete
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content: ""
+          contentType: application/json
+        method: PATCH
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: complete
+          value:
+            $$jsExpression: textFieldModifierTacheComplete.value
+        - name: Id
+          value:
+            $$jsExpression: textFieldModifierTacheId.value
+    - name: ModifierStatutSousTache
+      mode: mutation
+      query:
+        kind: rest
+        url:
+          $$jsExpression:
+            parameters.API_HOST + "/taches/" + parameters.IdTache +
+            "/sousTaches/" + parameters.IdSousTache + "/statut/" +
+            parameters.complete
+        searchParams: []
+        headers:
+          - name: Authorization
+            value:
+              $$jsExpression: parameters.API_KEY
+        body:
+          kind: raw
+          content: ""
+          contentType: application/json
+        method: PATCH
+      parameters:
+        - name: API_HOST
+          value:
+            $$env: API_HOST
+        - name: API_KEY
+          value:
+            $$env: API_KEY
+        - name: IdTache
+          value:
+            $$jsExpression: dataGrid.selection.id
+        - name: complete
+          value:
+            $$jsExpression: textFieldModifierCompleteST.value
+        - name: IdSousTache
+          value:
+            $$jsExpression: dataGrid2.selection.id
